@@ -43,7 +43,7 @@ def get_output_line(line, dict_specs):
             output_line[column_name] = value
 
         start = end
-
+        
     return output_line
 
 def process_data(specs_dir, data_dir, output_dir, specs_files, data_files):

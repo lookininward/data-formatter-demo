@@ -1,7 +1,7 @@
 import os
 import shutil
 import unittest
-from app import process_data
+from app import process_data, get_output_line
 from tempfile import TemporaryDirectory
 from parameterized import parameterized
 
@@ -21,6 +21,51 @@ class TestProcessData(unittest.TestCase):
 
     def tearDown(self):
         self.temp_dir.cleanup()
+    
+    def test_process_data_invalid_spec(self):
+        # Create a mock spec file with invalid content
+        spec_file = 'spec1.txt'
+        with open(os.path.join(self.specs_dir, spec_file), 'w') as f:
+            f.write("Invalid spec content")
+
+        # Create a mock data file
+        data_file = 'data1.txt'
+        with open(os.path.join(self.data_dir, data_file), 'w') as f:
+            f.write("Mock data content")
+
+        # Calling the function under test
+        process_data(self.specs_dir, self.data_dir, self.output_dir, [spec_file], [data_file])
+
+        # Check the directory for the output files
+        self.assertEqual(os.listdir(self.output_dir), [])
+    
+    def test_process_data_valid_spec(self):
+            # Create a mock spec file with valid content
+        spec_file = 'spec1.csv'
+        with open(os.path.join(self.specs_dir, spec_file), 'w') as f:
+            f.write("column name,width,datatype\n")
+            f.write("name,10,text\n")
+            f.write("age,3,integer\n")
+            f.write("valid,1,boolean\n")
+
+        # Create a mock data file
+        data_file = 'spec1_data.txt'
+        with open(os.path.join(self.data_dir, data_file), 'w') as f:
+            f.write("John      25 1\n")
+            f.write("Jane      30 0\n")
+
+        # Calling the function under test
+        process_data(self.specs_dir, self.data_dir, self.output_dir, [spec_file], [data_file])
+
+        # Check the directory for the output files
+        self.assertEqual(os.listdir(self.output_dir), ['spec1.ndjson'])
+
+        # Check the content of the output file
+        with open(os.path.join(self.output_dir, 'spec1.ndjson'), 'r') as f:
+            output = f.readlines()
+            self.assertEqual(len(output), 2)
+            self.assertEqual(output[0], '{"name": "John", "age": 25, "valid": True}\n')
+            self.assertEqual(output[1], '{"name": "Jane", "age": 30, "valid": False}\n')
 
     @staticmethod
     def parametrize_test_data():
@@ -72,6 +117,53 @@ class TestProcessData(unittest.TestCase):
             with open(expected_output_file, 'r') as f:
                 expected_output_data = f.read()
                 self.assertEqual(output_data, expected_output_data)
-        
+
+
+class TestGetOutputLine(unittest.TestCase):
+    @staticmethod
+    def test_data():
+        return [
+      (
+                {
+                    'column1': {'width': '5', 'datatype': 'text'},
+                    'column2': {'width': '1', 'datatype': 'boolean'},
+                    'column3': {'width': '3', 'datatype': 'integer'}
+                },
+                'abcde1  123',
+                {'column1': 'abcde', 'column2': True, 'column3': 1}
+            ),
+            (
+                {
+                    'name': {'width': '10', 'datatype': 'TEXT'},
+                    'valid': {'width': '1', 'datatype': 'BOOLEAN'},
+                    'count': {'width': '3', 'datatype': 'INTEGER'}
+                },
+                'Diabetes  1  1',
+                {'name': 'Diabetes', 'valid': True, 'count': 1}
+            ),
+            (
+                {
+                    'name': {'width': '10', 'datatype': 'TEXT'},
+                    'valid': {'width': '1', 'datatype': 'BOOLEAN'},
+                    'count': {'width': '3', 'datatype': 'INTEGER'}
+                },
+                'Asthma    0-14',
+                {'name': 'Asthma', 'valid': False, 'count': -14}
+            ),
+            (
+                {
+                    'name': {'width': '10', 'datatype': 'TEXT'},
+                    'valid': {'width': '1', 'datatype': 'BOOLEAN'},
+                    'count': {'width': '3', 'datatype': 'INTEGER'}
+                },
+                'Stroke    1122',
+                {'name': 'Stroke', 'valid': True, 'count': 122}
+            )
+        ]
+    
+    @parameterized.expand(test_data())
+    def test_get_output_line(self, dict_specs, line, expected_output):
+        self.assertEqual(get_output_line( line, dict_specs), expected_output)
+
 if __name__ == '__main__':
     unittest.main()
