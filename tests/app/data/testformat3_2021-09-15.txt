@@ -1,0 +1,3 @@
+ABC123Product A           1
+XYZ789Product B           0
+DEF456Product C           1

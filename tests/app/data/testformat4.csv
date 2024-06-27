@@ -1,0 +1,5 @@
+column name,width,datatype
+customer_id,8,INTEGER
+first_name,15,TEXT
+last_name,15,TEXT
+active,1,BOOLEAN

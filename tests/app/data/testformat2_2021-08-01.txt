@@ -1,0 +1,3 @@
+12345John Doe        1
+67890Jane Smith      0
+13579Alice Johnson   1

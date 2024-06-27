@@ -1,0 +1,3 @@
+{"code": "ABC123", "description": "Product A", "active": True}
+{"code": "XYZ789", "description": "Product B", "active": False}
+{"code": "DEF456", "description": "Product C", "active": True}

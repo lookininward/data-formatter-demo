@@ -1,0 +1,4 @@
+column name,width,datatype
+code,6,TEXT
+description,20,TEXT
+active,1,BOOLEAN

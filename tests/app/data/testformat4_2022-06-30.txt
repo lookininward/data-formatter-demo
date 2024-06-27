@@ -1,0 +1,15 @@
+12345678John            Doe             1
+23456789Jane            Smith           0
+34567890Michael         Johnson         1
+45678901Emily           Brown           1
+56789012David           Davis           0
+67890123Sarah           Wilson          1
+78901234James           Miller          0
+89012345Anna            Martinez        1
+90123456Robert          Anderson        0
+01234567Emma            Thompson        1
+12345678William         Garcia          0
+23456789Olivia          Hernandez       1
+34567890Matthew         Robinson        0
+45678901Sophia          Lewis           1
+56789012Daniel          Lee             0

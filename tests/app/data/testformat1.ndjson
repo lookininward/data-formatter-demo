@@ -1,0 +1,3 @@
+{"name": "Diabetes", "valid": True, "count": 1}
+{"name": "Asthma", "valid": False, "count": -14}
+{"name": "Stroke", "valid": True, "count": 122}

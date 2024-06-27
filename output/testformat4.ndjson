@@ -1,0 +1,15 @@
+{"customer_id": 12345678, "first_name": "John", "last_name": "Doe", "active": False}
+{"customer_id": 23456789, "first_name": "Jane", "last_name": "Smith", "active": False}
+{"customer_id": 34567890, "first_name": "Michael", "last_name": "Johnson", "active": False}
+{"customer_id": 45678901, "first_name": "Emily", "last_name": "Brown", "active": False}
+{"customer_id": 56789012, "first_name": "David", "last_name": "Davis", "active": False}
+{"customer_id": 67890123, "first_name": "Sarah", "last_name": "Wilson", "active": False}
+{"customer_id": 78901234, "first_name": "James", "last_name": "Miller", "active": False}
+{"customer_id": 89012345, "first_name": "Anna", "last_name": "Martinez", "active": False}
+{"customer_id": 90123456, "first_name": "Robert", "last_name": "Anderson", "active": False}
+{"customer_id": 1234567, "first_name": "Emma", "last_name": "Thompson", "active": False}
+{"customer_id": 12345678, "first_name": "William", "last_name": "Garcia", "active": False}
+{"customer_id": 23456789, "first_name": "Olivia", "last_name": "Hernandez", "active": False}
+{"customer_id": 34567890, "first_name": "Matthew", "last_name": "Robinson", "active": False}
+{"customer_id": 45678901, "first_name": "Sophia", "last_name": "Lewis", "active": False}
+{"customer_id": 56789012, "first_name": "Daniel", "last_name": "Lee", "active": False}

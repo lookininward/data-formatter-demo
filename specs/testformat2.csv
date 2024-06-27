@@ -1,0 +1,4 @@
+column name,width,datatype
+id,5,INTEGER
+name,15,TEXT
+status,1,BOOLEAN
