@@ -71,7 +71,7 @@ def process_data(specs_dir, data_dir, output_dir, specs_files, data_files):
                 continue
 
             # Prepare output file
-            output_filename = os.path.join(output_dir, f"{spec_filename}.ndjson")
+            output_filename = os.path.join(output_dir, f"{os.path.splitext(data_file)[0]}.ndjson")
 
             # Process data file and write output
             with open(os.path.join(data_dir, data_file), 'r') as f:

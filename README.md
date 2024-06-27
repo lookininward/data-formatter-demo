@@ -18,7 +18,7 @@ You have directories containing data files and specification files. The specific
   - `datatype`: JSON data type present in the resulting JSON object.
 - Data files will be flat text files with lines formatted as specified by their associated specification file.
 - Output the parsed files into an NDJSON format with one JSON object for each line of the input file.
-- TODO: The output file should be in the `output/` directory with the same name as the input file before the extension.
+- The output file should be in the `output/` directory with the same name as the input file before the extension.
 
 ## Example
 

@@ -58,10 +58,10 @@ class TestProcessData(unittest.TestCase):
         process_data(self.specs_dir, self.data_dir, self.output_dir, [spec_file], [data_file])
 
         # Check the directory for the output files
-        self.assertEqual(os.listdir(self.output_dir), ['spec1.ndjson'])
+        self.assertEqual(os.listdir(self.output_dir), ['spec1_data.ndjson'])
 
         # Check the content of the output file
-        with open(os.path.join(self.output_dir, 'spec1.ndjson'), 'r') as f:
+        with open(os.path.join(self.output_dir, 'spec1_data.ndjson'), 'r') as f:
             output = f.readlines()
             self.assertEqual(len(output), 2)
             self.assertEqual(output[0], '{"name": "John", "age": 25, "valid": True}\n')
@@ -73,22 +73,22 @@ class TestProcessData(unittest.TestCase):
             (                
                 "testformat1.csv",
                 "testformat1_2021-07-06.txt",
-                'testformat1.ndjson',
+                "testformat1_2021-07-06.ndjson",
             ),
             (                
                 "testformat2.csv",
                 "testformat2_2021-08-01.txt",
-                'testformat2.ndjson',
+                "testformat2_2021-08-01.ndjson",
             ),
             (
                 "testformat3.csv",
                 "testformat3_2021-09-15.txt",
-                'testformat3.ndjson',
+                "testformat3_2021-09-15.ndjson",
             ),
             (
                 "testformat4.csv",
                 "testformat4_2022-06-30.txt",
-                'testformat4.ndjson'
+                "testformat4_2022-06-30.ndjson",
             )
         ]
 
@@ -123,7 +123,7 @@ class TestGetOutputLine(unittest.TestCase):
     @staticmethod
     def test_data():
         return [
-      (
+            (
                 {
                     'column1': {'width': '5', 'datatype': 'text'},
                     'column2': {'width': '1', 'datatype': 'boolean'},
