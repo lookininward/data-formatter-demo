@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Adjust based on your project's requirements setup
+          pip install -r requirements.txt
       
       - name: Run tests
         run: |
-          python -m unittest discover -s tests -p '*_test.py'  # Adjust based on your test file naming conventions
+          python3 -m unittest tests/app/test_app.py tests/utils/test_utils.py
