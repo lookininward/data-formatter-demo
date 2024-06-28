@@ -1,9 +1,6 @@
 name: Python Test CI
 
-on:
-  push:
-    branches:
-      - '*'
+on: [push] 
 
 jobs:
   test:
@@ -11,10 +8,10 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: '3.11'
       
@@ -25,4 +22,4 @@ jobs:
       
       - name: Run tests
         run: |
-          python3 -m unittest tests/app/test_app.py tests/utils/test_utils.py
+          python -m unittest tests/app/test_app.py tests/utils/test_utils.py
