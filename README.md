@@ -1,14 +1,12 @@
 # Python Data Formatter Demo
 
 ## Tests
-To run the tests, run `python3 -m unittest tests/app/test_app.py tests/utils/test_utils.py`
+To run tests: `python3 -m unittest tests/app/test_app.py tests/utils/test_utils.py`
 
 ## Problem
-
-You have directories containing data files and specification files. The specification files describe the structure of the data files. Write an application in the language of your choice that reads format definitions from specification files. Use these definitions to convert the parsed files to NDJSON files.
+You have directories containing data files and specification files. The specification files describe the structure of the data files. Write an app that reads format definitions from specification files. Use these definitions to convert the parsed files to NDJSON files.
 
 ## Details
-
 - Data files exist in `data/`, specification files exist in `specs/`.
 - Spec files will have filenames equal to the file type they specify and an extension of `.csv`. E.g. `fileformat1.csv` specifies files of type `fileformat1`.
 - Data files will have filenames based on their specification file name, followed by an underscore, followed by the drop date and an extension of `.txt`. E.g. `fileformat1_2020-10-15.txt` would be parsed using `specs/fileformat1.csv`.
@@ -21,7 +19,6 @@ You have directories containing data files and specification files. The specific
 - The output file should be in the `output/` directory with the same name as the input file before the extension.
 
 ## Example
-
 Given:
 - `specs/testformat1.csv`:
 ```
